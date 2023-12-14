@@ -1,0 +1,25 @@
+//transposed matrix--matrix calculator ver.1
+#include <stdio.h>
+#define N 100
+int main()
+{
+	int a[N][N] = {0};
+	int b[N][N] = {0};
+	int row, col;
+	scanf("%d %d", &row, &col);
+	for (int i = 0; i < row; i++)
+		for (int j = 0; j < col; j++)
+			scanf("%d", &a[i][j]);
+	for (int i = 0; i < N; i++)
+		for (int j = 0; j < N ; j++) {
+			b[j][i] = a[i][j] ;
+		}
+		printf("__________________________\n");
+		for (int i = 0; i < col; i++) {
+			for (int j = 0; j < row ; j++) {
+				printf("%d ", b[i][j]);
+			}
+			printf("\n");
+		}
+		return 0;
+}
