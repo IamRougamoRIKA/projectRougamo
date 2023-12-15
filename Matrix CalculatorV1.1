@@ -1,0 +1,92 @@
+//matrix calculator ver.1.1
+#include <stdio.h>
+#include <time.h>
+#include <windows.h>
+#define N 100
+typedef int dim;
+typedef double real;
+int main()
+{
+	int x = 0;
+	int res = 0;
+	do {
+		real a[N][N] = {0};
+		real b[N][N] = {0};
+		real c[N][N] = {0};
+		int row, col, input;
+		printf("Thank you for using this calculator,this software is open-sourced!\n");
+		printf("Please select the function.\n");
+		printf("1 for matrix.\n");
+		scanf("%d", &input);
+		switch (input) {
+			case 1:
+				int matrix;
+				printf("select your calculation:1 for transpose.2 for multiplication.\n");
+				scanf("%d", &matrix);
+				switch (matrix) {
+					case 1:
+						do {
+							printf("please input your matrix rows and matrix columns.\n");
+							scanf("%d %d", &row, &col);
+							printf("please input your matrix.\n");
+							for (int i = 0; i < row; i++)
+								for (int j = 0; j < col; j++)
+									scanf("%lf", &a[i][j]);
+							printf("calculating...\n");
+							Sleep(10000);
+							for (int i = 0; i < N; i++)for (int j = 0; j < N ; j++) {
+									b[j][i] = a[i][j] ;
+								}
+							printf("__________________________\n");
+							for (int i = 0; i < col; i++) {
+								for (int j = 0; j < row ; j++) {
+									printf("%lf ", b[i][j]);
+								}
+								printf("\n");
+							}
+							printf("continue?");
+							scanf("%d", &x);
+						}
+						while (x == 1);
+						printf("\nrestart?");
+						scanf("%d", &res);
+						break;
+					case 2:
+						dim row1, col1, col2;
+						printf("Please input row 1,column 1 and col 2\n");
+						scanf("%d %d %d", &row1, &col1, &col2);
+						printf("___________________________________\n");
+						for (dim i = 0; i < row1; i++) { 
+							for (dim j = 0; j < col1; j++) { 
+								scanf("%lf", &a[i][j]);
+							}
+						}
+						printf("____________________________________\n");
+						for (dim i = 0; i < col1; i++) {
+							for (dim j = 0; j < col2; j++) {
+								scanf("%lf", &b[i][j]);
+							}
+						}
+						printf("____________________________________\n");
+						for (dim i = 0; i < row1; i++) {
+							for (dim j = 0; j < col2; j++) {
+								for (dim k = 0; k < col1; k++) {
+									c[i][j] += a[i][k] * b[k][j];
+								}
+							}
+						}
+						for (dim i = 0; i < row1; i++) {
+							for (dim j = 0; j < col2; j++) {
+								printf("%lf ", c[i][j]);
+							}
+							printf("\n");
+						}
+						printf("\ncontinue?");
+						scanf("%d", &x);
+				}
+			break;
+		}
+	}
+	while (res == 1);
+	return 0;
+}
